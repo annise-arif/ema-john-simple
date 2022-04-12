@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import auth from "../../firebase-init";
+import auth from "../../firebase.init";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import "./SignUp.css";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -83,7 +83,7 @@ const SignUp = () => {
           <input onBlur={handleName} type="text" name="name" id="" required />
         </div> */}
         <div className="input-group d-block">
-          <label className="d-block me-4 pe-3" htmlFor="email">
+          <label className="d-block me-5 pe-2" htmlFor="email">
             Email
           </label>
 
@@ -98,7 +98,7 @@ const SignUp = () => {
         <br />
 
         <div className="input-group d-block">
-          <label className="d-block me-2" htmlFor="password">
+          <label className="d-block me-4 pe-1" htmlFor="password">
             Password
           </label>
 
@@ -111,7 +111,7 @@ const SignUp = () => {
           />
         </div>
         <div className="input-group d-block">
-          <label className="d-block ms-1 pe-2 pt-3" htmlFor="password">
+          <label className="d-block ps-5 me-3 pt-3" htmlFor="password">
             Confirm Password
           </label>
 

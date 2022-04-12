@@ -24,3 +24,15 @@
     padding-bottom: 5px;
     border-radius: 3px;
 }
+.logout-btn{
+    margin-left: 20px;
+    background-color: rgb(255, 191, 113);
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    padding: 1px 10px;
+}
+.logout-btn:hover{
+    background-color: rgb(250, 83, 22);
+}

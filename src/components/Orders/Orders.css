@@ -3,9 +3,14 @@
 }
 .proceed-btn{
     font-size: 18px;
-    background-color: rgb(243, 158, 0);
-    color: rgb(186, 255, 129);
+    background-color: rgb(245, 179, 57);
+    color: rgb(61, 41, 26);
     padding: 8px;
+    margin-top: 20px;
     border: 0px;
     border-radius: 7px;
+}
+.proceed-btn:hover{
+    font-size: 20px;
+    background-color: rgb(221, 146, 7);
 }
