@@ -1,0 +1,51 @@
+.login-form{
+    background-color: #fdf2e1;
+    border: 2px solid rgb(192, 190, 194);
+    width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+.google-signin{
+    padding: 15px;
+    margin: 20px;
+}
+.login-form label{
+    font-size: 22px;
+    font-weight: 500;
+    margin-left: -90px;
+}
+.login-form input{
+    border: px solid gray;
+}
+.submit-btn{
+    background-color: #ffad33;
+    border-radius: 8px;
+    border: none;
+    padding: 2px 20px;
+    margin-left: -100px;
+    margin-bottom: 10px;
+
+}
+.google-signin button{
+    padding: 0px 5px 10px 8px;
+    font-size: 18px;
+    color: orangered;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1.5px solid #FF9900;
+    background-color: rgb(241, 229, 229);
+}
+.google-signin button:hover{
+    background-color: rgb(243, 197, 197);
+    font-weight: 800;
+}
+.google-signin button img{
+    margin-top: 10px;
+    margin-bottom: -4px;
+    width: 25px;
+    height: 25px;
+}
+.form-link{
+    color: #FF9900;
+}

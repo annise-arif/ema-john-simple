@@ -1,0 +1,11 @@
+.review-items-container{
+    margin: 0 auto;
+}
+.proceed-btn{
+    font-size: 18px;
+    background-color: rgb(243, 158, 0);
+    color: rgb(186, 255, 129);
+    padding: 8px;
+    border: 0px;
+    border-radius: 7px;
+}

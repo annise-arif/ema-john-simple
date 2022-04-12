@@ -10,7 +10,15 @@
 }
 
 .cart-container{
-    background-color: rgba(255, 151, 0, 0.3);
+    background-color: rgba(255, 147, 6, 0.3);
+}
+.review-btn{
+    font-size: 18px;
+    background-color: rgb(255, 199, 95);
+    color: rgb(90, 114, 109);
+    padding: 8px;
+    border: 0px;
+    border-radius: 7px;
 }
 @media screen and (max-width:1100px) {
     .products-container{
