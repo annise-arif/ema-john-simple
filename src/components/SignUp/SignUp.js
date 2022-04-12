@@ -1,36 +1,48 @@
-import {
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase-init";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import "./SignUp.css";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const googleProvider = new GoogleAuthProvider();
 
 const SignUp = () => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cpassword, setCpassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [user, setUser] = useState("");
+  const navigate = useNavigate();
 
-  const handleName = (event) => {
-    setName(event.target.value);
-  };
+  const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
+
+ 
   const handleEmail = (event) => {
     setEmail(event.target.value);
-    console.log(event.target.value);
   };
   const handlePassword = (event) => {
     setPassword(event.target.value);
-    console.log(event.target.value);
   };
   const handleConfirmPassword = (event) => {
-    setCpassword(event.target.value);
+    setConfirmPassword(event.target.value);
+  };
+
+ 
+  if(user){
+      navigate('/shop');
+  }
+
+  const handleCreateUser = (event) => {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      setError("your two passwords did not match");
+      return;
+    } 
+    if (password.length <6) {
+      setError('Password must be 6 characters or longer');
+      return;
+    }
+    createUserWithEmailAndPassword(email, password);
   };
 
   const handleSignInWithGoogle = (event) => {
@@ -38,7 +50,9 @@ const SignUp = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        setUser(user);
+        if(user){
+            navigate('/about');
+        }
       })
       .catch((error) => {
         const message = error.message;
@@ -46,28 +60,12 @@ const SignUp = () => {
       });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (password !== cpassword) {
-      setError("your password did not match");
-    } else if (password === cpassword) {
-      createUserWithEmailAndPassword(auth, email, password)
-      .then((res) => {
-        const user = res.user;
-        setUser(user);
-        console.log(user);
-      })
-      .catch(error =>{
-        setError(error)
-      });
-    }
-  };
   return (
     <div className="login-form text-center">
       <h1>Please Sign Up</h1>
 
       <div className="google-signin">
-        <button onClick={handleSignInWithGoogle}>
+        <button onClick={handleSignInWithGoogle} className=''>
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png"
             alt=""
@@ -76,14 +74,14 @@ const SignUp = () => {
         </button>
       </div>
 
-      <form onSubmit={handleSubmit}>
-        <div className="input-group d-block py-4">
+      <form onSubmit={handleCreateUser}>
+        {/* <div className="input-group d-block py-4">
           <label className="d-block me-0 ps-3" htmlFor="name">
             Your Name
           </label>
 
           <input onBlur={handleName} type="text" name="name" id="" required />
-        </div>
+        </div> */}
         <div className="input-group d-block">
           <label className="d-block me-4 pe-3" htmlFor="email">
             Email
@@ -131,11 +129,11 @@ const SignUp = () => {
             <small>login success full</small>
           </p>
         )}
-        {!user && (
+        
           <p>
-            <small className="text-danger">Fill The Input Field</small>
+            <small className="text-danger">{error}</small>
           </p>
-        )}
+        
         <input className="submit-btn" type="submit" value="Sign Up" />
       </form>
       <p>
